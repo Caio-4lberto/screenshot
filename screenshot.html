@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API para Capturar a Tela com Rolagem</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  
+</head>
+<body>
+
+
+  <script>
+    // Função para capturar a tela com rolagem
+    
+      html2canvas(document.body, {
+        scrollX: window.scrollX,  // Captura levando em consideração a rolagem horizontal
+        scrollY: window.scrollY,  // Captura levando em consideração a rolagem vertical
+        useCORS: true,            // Permite carregar imagens de outros domínios se necessário
+        allowTaint: true          // Permite acessar imagens externas com as permissões necessárias
+      }).then(function(canvas) {
+        const base64Image = canvas.toDataURL('image/png'); // Gera o Base64 da imagem
+        // Exibe a imagem gerada como prévia
+        //document.getElementById('preview').src = base64Image;
+        // Exibe o base64 no campo de texto
+        //document.getElementById('base64').value = base64Image;
+        console.log(base64Image);
+      });
+    
+  </script>
+
+</body>
+</html>
